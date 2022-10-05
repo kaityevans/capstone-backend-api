@@ -3,6 +3,7 @@ const restaurantsController = require('../controllers/restaurants');
 const router = express.Router();
 
 router.get('/api/capstone', restaurantsController.list)
+router.get('/api/capstone/specific', restaurantsController.specificList)
 router.get("/api/capstone/:id", restaurantsController.show)
 router.post("/api/capstone/", restaurantsController.create);
 router.put("/api/capstone/:id", restaurantsController.update);

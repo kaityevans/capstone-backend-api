@@ -14,6 +14,19 @@ const list = (req, res) => {
   });
 };
 
+// 1-6 List
+const specificList = (req, res) => {
+  let sql = "SELECT * FROM ?? LIMIT 6";
+  sql = mysql.format(sql, ["restaurants"]);
+  pool.query(sql, (err, rows) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("Hey! Something happened.");
+    }
+    res.json(rows);
+  });
+};
+
 // Show
 const show = (req, res) => {
   const { id } = req.params;
@@ -75,4 +88,4 @@ const remove = (req, res) => {
     res.json(row.affectedRows);
   });
 };
-module.exports = { list, show, create, update, remove };
+module.exports = { list, specificList, show, create, update, remove };
