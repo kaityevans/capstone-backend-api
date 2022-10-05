@@ -16,8 +16,8 @@ const list = (req, res) => {
 
 // 1-6 List
 const specificList = (req, res) => {
-  let sql = "SELECT * FROM ?? LIMIT 6";
-  sql = mysql.format(sql, ["restaurants"]);
+  let sql = "SELECT * FROM ?? LIMIT ?";
+  sql = mysql.format(sql, ["restaurants", 6]);
   pool.query(sql, (err, rows) => {
     if (err) {
       console.error(err);
